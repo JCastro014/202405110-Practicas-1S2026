@@ -33,4 +33,20 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params  // extrae el id de la URL
+
+    const { data, error } = await supabase
+      .from("publicacion")
+      .select("*")
+      .eq("id_publicacion", id)
+      .single() // espera exactamente 1 resultado
+
+    if (error) throw error
+    res.json(data)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
 module.exports = router;

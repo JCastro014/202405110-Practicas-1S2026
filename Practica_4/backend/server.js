@@ -9,6 +9,7 @@ app.use("/api/cursos", require("./routes/cursos"));
 app.use("/api/catedraticos", require("./routes/catedraticos"));
 app.use("/api/publicaciones", require("./routes/publicaciones"));
 app.use("/api/comentarios", require("./routes/comentarios"));
+app.use("/api/usuarios", require("./routes/usuarios"))  // ← agrega esta
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
