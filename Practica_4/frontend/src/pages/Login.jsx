@@ -3,6 +3,7 @@ import axios from "axios";
 function Login() {
     const [registro, setResgistro] = useState('')
     const [contrasena , setContrasena ] = useState('')
+    const navigate = useNavigate()
     const handleLogin = async () => {
         try {
             const response = await axios.post("http://localhost:3000/api/auth/login", {
@@ -12,7 +13,7 @@ function Login() {
 localStorage.setItem("token", response.data.token)
 localStorage.setItem("user", JSON.stringify(response.data.user))
 
-alert("Login Correcto")
+navigate('/feed')
         }
         catch (error) {
             alert("Error en el login")
