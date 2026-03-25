@@ -5,6 +5,14 @@ const API = "http://localhost:3000/api"
 
 
 
+
+
+
+
+
+
+
+
 function CrearPublicacion() {
     const [tipo, setTipo] = useState("publicacion")
     const [cursos, setCursos] = useState([])
@@ -47,16 +55,12 @@ function CrearPublicacion() {
   return (
     <div>
       <h2>Nueva Publicación</h2>
-
-      {/* Botones para elegir tipo */}
       <button onClick={() => { setTipo("curso"); setIdSeleccionado("") }}>
         Sobre un Curso
       </button>
       <button onClick={() => { setTipo("catedratico"); setIdSeleccionado("") }}>
         Sobre un Catedrático
       </button>
-
-      {/* Dropdown según el tipo seleccionado */}
       {tipo === "curso" ? (
         <select value={idSeleccionado} onChange={(e) => setIdSeleccionado(e.target.value)}>
           <option value="">Selecciona un curso...</option>
