@@ -19,4 +19,20 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+router.post("/", async (req, res) => {
+  try {
+    const { nombres, apellidos, correo } = req.body
+
+    const { data, error } = await supabase
+      .from("catedratico")
+      .insert([{ nombres, apellidos, correo }])
+      .select()
+
+    if (error) throw error
+    res.status(201).json(data)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
 module.exports = router;
